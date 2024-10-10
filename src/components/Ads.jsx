@@ -22,9 +22,9 @@ function Ads() {
               Jump in
             </button>
           </div>
-          <div className="flex gap-20">
-            <img src="shoes.png" className="lg:w-32 w-20" alt="" />
-            <img src="t-shirt.png" className="lg:w-32 w-20" alt="" />
+          <div className="flex sm:gap-20 gap-4">
+            <img src="shoes.png" className="lg:w-32 sm:w-20 w-10" alt="" />
+            <img src="t-shirt.png" className="lg:w-32 sm:w-20 w-10" alt="" />
           </div>
         </div>
       </section>

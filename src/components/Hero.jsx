@@ -7,7 +7,7 @@ function Hero() {
       <section className="">
         <div className="flex lg:justify-end justify-center items-center w-full bg-purple-400">
           <div className="text-lg lg:text-xl mb-8 max-w-lg">
-            <p className="text-3xl font-bold">
+            <p className="sm:text-3xl text-xl text-center font-bold">
               Discover the best products, tailored for you.
             </p>
             <button className="bg-orange-400 px-2 py-1 flex  items-center gap-1 hover:bg-orange-500 rounded-lg text-white mt-4 ">
