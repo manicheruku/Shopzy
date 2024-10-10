@@ -17,7 +17,7 @@ function Ads() {
             <p className="lg:text-xs text-[8px] text-white">
               Score fresh finds from New balance, Palm Angels, and more.
             </p>
-            <button className="bg-white rounded-2xl w-[80px] lg:w-[100px] px-2 py-1 text-[#045843]">
+            <button className="bg-white sm:rounded-2xl rounded-md sm:w-[80px] w-[60px] lg:w-[100px] sm:px-2 sm:py-1 px-0.5 text-[#045843]">
               Jump in
             </button>
           </div>
