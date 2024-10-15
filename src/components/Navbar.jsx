@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { CiMenuFries } from "react-icons/ci";
 import { MdOutlineCancel } from "react-icons/md";
@@ -9,7 +10,9 @@ function Navbar() {
   return (
     <nav className="bg-orange-400 h-20 w-full flex items-center justify-around relative">
       <section>
-        <img src="loogo.gif" alt="" className="sm:w-32 w-16 bg-transparent" />
+        <Link to="/">
+          <img src="loogo.gif" alt="" className="sm:w-32 w-16 bg-transparent" />
+        </Link>
       </section>
 
       <section className="flex justify-center items-center relative">

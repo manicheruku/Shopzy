@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const womenCategories = [
   { title: "Women's Dresses", img: "dress2.png" },
@@ -24,13 +25,20 @@ function Categories() {
         <p className="m-4 font-semibold text-lg">Shop Womens</p>
         <section className="grid grid-cols-3 grid-rows-2 gap-6  lg:grid-cols-6 lg:grid-rows-none ">
           {womenCategories.map((category) => (
-            <div className="w-full h-48 flex flex-col bg-[#F7F7F7]  justify-center items-center hover:underline border border-transparent hover:border-orange-500 transition-all duration-300">
-              <img
-                src={category.img}
-                className="h-[90%] justify-center object-contain text-center w-24 mt-2"
-                alt=""
-              />
-              <p className="">{category.title}</p>
+            <div className="w-full h-48 flex flex-col bg-[#F7F7F7] justify-center items-center hover:underline border border-transparent hover:border-orange-500 transition-all duration-300">
+              <Link
+                to="/womensfashion"
+                className="flex flex-col justify-center items-center w-full h-full"
+              >
+                <img
+                  src={category?.img}
+                  className="h-[90%] object-contain w-24 mt-2"
+                  alt={category?.title || "Category Image"}
+                />
+                <p className="text-center mt-2">
+                  {category?.title || "Category"}
+                </p>
+              </Link>
             </div>
           ))}
         </section>
@@ -39,12 +47,18 @@ function Categories() {
         <section className="grid grid-cols-3 grid-rows-2 gap-6  lg:grid-cols-6 lg:grid-rows-none ">
           {mensCategories.map((category) => (
             <div className="w-full h-48 flex flex-col bg-[#F7F7F7]  justify-center items-center hover:underline border border-transparent hover:border-orange-500 transition-all duration-300">
-              <img
-                src={category.img}
-                className="h-[90%] justify-center object-contain text-center w-24 mt-2"
-                alt=""
-              />
-              <p className="">{category.title}</p>
+              <Link
+                to="/mensfashion"
+                className="flex flex-col justify-center items-center w-full h-full"
+              >
+                <img
+                  src={category.img}
+                  className="h-[90%] justify-center object-contain text-center w-24 mt-2"
+                  alt=""
+                />
+
+                <p className="">{category.title}</p>
+              </Link>
             </div>
           ))}
         </section>

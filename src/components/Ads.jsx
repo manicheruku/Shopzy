@@ -24,12 +24,12 @@ function Ads() {
           <div className="flex gap-2 sm:gap-4 items-center">
             <img
               src="shoes.png"
-              className="w-12 hidden sm:w-20 lg:w-32 h-auto"
+              className="w-12 sm:block hidden sm:w-20 lg:w-32 h-auto"
               alt="Shoes"
             />
             <img
               src="t-shirt.png"
-              className="w-12 hidden sm:w-20 lg:w-32 h-auto"
+              className="w-12 hidden sm:w-20 lg:w-32 sm:block h-auto"
               alt="T-shirt"
             />
           </div>

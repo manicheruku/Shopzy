@@ -1,20 +1,25 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/navbar";
-import Hero from "./components/Hero";
-import Categories from "./components/Categories";
-import Ads from "./components/Ads";
+import Navbar from "./components/Navbar";
+import MensCategory from "./components/MensCategory";
+
+import WomensCategory from "./components/WomensCategory";
+import Homepage from "./components/Homepage";
 
 function App() {
   return (
     <>
-      <Navbar />
+      <BrowserRouter basename="/Shopzy/">
+        <Navbar />
 
-      <Hero />
-      <Categories />
-      <Ads />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+
+          <Route path="/womensfashion" element={<WomensCategory />} />
+          <Route path="/mensfashion" element={<MensCategory />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
