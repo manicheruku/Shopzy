@@ -34,6 +34,7 @@ function Categories() {
                   src={category?.img}
                   className="h-[90%] object-contain w-24 mt-2"
                   alt={category?.title || "Category Image"}
+                  loading="lazy"
                 />
                 <p className="text-center mt-2">
                   {category?.title || "Category"}
