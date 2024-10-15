@@ -55,6 +55,7 @@ function Categories() {
                   src={category.img}
                   className="h-[90%] justify-center object-contain text-center w-24 mt-2"
                   alt=""
+                  loading="lazy"
                 />
 
                 <p className="">{category.title}</p>
