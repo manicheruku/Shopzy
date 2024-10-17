@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
-import { CiMenuFries } from "react-icons/ci";
-import { MdOutlineCancel } from "react-icons/md";
 import { BsFillHandbagFill } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
 import { FcAbout } from "react-icons/fc";
 import { useSelector } from "react-redux";
+import { HiOutlineHome } from "react-icons/hi";
+import { CgProfile } from "react-icons/cg";
 
 function Navbar({ products }) {
-  const [isMenuOpened, setIsMenuOpened] = useState(false);
+  // const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const location = useLocation();
@@ -49,6 +49,7 @@ function Navbar({ products }) {
           onChange={(e) => setSearch(e.target.value)}
           className="border-solid border-orange-400 outline-none pl-4 pr-10 focus:shadow-xl rounded-3xl h-7 lg:h-10"
         />
+
         <button className="absolute right-2 h-5 w-5">
           <CiSearch />
         </button>
@@ -73,7 +74,7 @@ function Navbar({ products }) {
         )}
       </section>
 
-      <section className="lg:hidden">
+      {/* <section className="lg:hidden">
         <button onClick={() => setIsMenuOpened(!isMenuOpened)}>
           <CiMenuFries size={22} />
         </button>
@@ -103,7 +104,7 @@ function Navbar({ products }) {
             <li className="my-hover-class">Sign In</li>
           </ul>
         )}
-      </section>
+      </section> */}
 
       <section className="hidden lg:flex gap-10">
         <ul className="flex gap-10 text-white items-center">
@@ -126,6 +127,33 @@ function Navbar({ products }) {
           <button className="text-white bg-orange-500 px-3 py-2 rounded-full text-right hover:bg-orange-400">
             Sign In
           </button>
+        </div>
+      </section>
+      <section className="bg-slate-100 fixed bottom-0 left-0 right-0 w-full z-50 lg:hidden">
+        <div className="flex justify-around py-3">
+          <ul className="flex justify-between w-full text-center">
+            <li className="flex-1 flex justify-center">
+              <Link to={"/"}>
+                <HiOutlineHome size={24} />
+              </Link>
+            </li>
+            <li className="flex-1 flex justify-center gap-1">
+              <Link to={"/cart"} className="flex items-center">
+                <BsFillHandbagFill size={24} />
+                <span>{cartItems.length}</span>
+              </Link>
+            </li>
+            <li className="flex-1 flex justify-center">
+              <Link to={"/wishlist"}>
+                <FaRegHeart size={24} />
+              </Link>
+            </li>
+            <li className="flex-1 flex justify-center">
+              <Link to={"/profile"}>
+                <CgProfile size={24} />
+              </Link>
+            </li>
+          </ul>
         </div>
       </section>
     </nav>

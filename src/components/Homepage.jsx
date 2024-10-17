@@ -11,6 +11,7 @@ function Homepage() {
       <Hero />
       <Categories />
       <Ads />
+
       <Footer />
     </>
   );
