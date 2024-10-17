@@ -3,12 +3,18 @@ import { Link, useLocation } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { CiMenuFries } from "react-icons/ci";
 import { MdOutlineCancel } from "react-icons/md";
+import { BsFillHandbagFill } from "react-icons/bs";
+import { FaRegHeart } from "react-icons/fa";
+import { FcAbout } from "react-icons/fc";
+import { useSelector } from "react-redux";
 
 function Navbar({ products }) {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const location = useLocation();
+
+  const cartItems = useSelector((state) => state.cart);
 
   useEffect(() => {
     if (location.pathname !== "/") {
@@ -49,7 +55,7 @@ function Navbar({ products }) {
 
         {/* Display filtered product list below the search bar */}
         {filteredProducts.length > 0 && (
-          <ul className="absolute bg-white shadow-md w-full max-h-48 overflow-y-auto mt-1 z-50 top-8">
+          <ul className="absolute bg-white shadow-md w-full max-h-48 overflow-y-auto mt-1 md:mt-2.5 z-50 top-8">
             {filteredProducts.map((product) => (
               <li
                 key={product.id}
@@ -77,22 +83,50 @@ function Navbar({ products }) {
             <button className="self-end" onClick={() => setIsMenuOpened(false)}>
               <MdOutlineCancel size={22} />
             </button>
-            <li className="my-hover-class">Cart</li>
-            <li className="my-hover-class">Wishlist</li>
+            <Link to={"/cart"}>
+              <li className="my-hover-class">
+                <BsFillHandbagFill />
+              </li>
+            </Link>
+            <li className="my-hover-class">
+              <FaRegHeart />
+            </li>
             <li className="my-hover-class">Profile</li>
-            <li className="my-hover-class">About Us</li>
+            <Link to={"/about"}>
+              <li
+                className="my-hover-class"
+                onClick={() => setIsMenuOpened(false)}
+              >
+                <FcAbout />
+              </li>
+            </Link>
             <li className="my-hover-class">Sign In</li>
           </ul>
         )}
       </section>
 
       <section className="hidden lg:flex gap-10">
-        <ul className="flex gap-10 text-white">
-          <li>Cart</li>
-          <li>Wishlist</li>
-          <li>Contact Us</li>
-          <li>Sign In</li>
+        <ul className="flex gap-10 text-white items-center">
+          <Link to={"/cart"}>
+            <li className="flex gap-0.5">
+              <BsFillHandbagFill size={20} />
+              {cartItems.length}
+            </li>
+          </Link>
+          <li>
+            <FaRegHeart size={20} />
+          </li>
+          <Link to={"/about"}>
+            <li>
+              <FcAbout size={20} />
+            </li>
+          </Link>
         </ul>
+        <div>
+          <button className="text-white bg-orange-500 px-3 py-2 rounded-full text-right hover:bg-orange-400">
+            Sign In
+          </button>
+        </div>
       </section>
     </nav>
   );

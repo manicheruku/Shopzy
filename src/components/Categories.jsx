@@ -24,15 +24,18 @@ function Categories() {
       <main className="mt-10 mx-4 lg:ml-10 lg:mr-10">
         <p className="m-4 font-semibold text-lg">Shop Womens</p>
         <section className="grid grid-cols-3 grid-rows-2 gap-6  lg:grid-cols-6 lg:grid-rows-none ">
-          {womenCategories.map((category) => (
-            <div className="w-full h-48 flex flex-col bg-[#F7F7F7] justify-center items-center hover:underline border border-transparent hover:border-orange-500 transition-all duration-300">
+          {womenCategories.map((category, index) => (
+            <div
+              className="w-full h-48 flex flex-col bg-[#F7F7F7] justify-center items-center hover:underline border border-transparent hover:border-orange-500 transition-all duration-300"
+              key={index}
+            >
               <Link
                 to="/womensfashion"
                 className="flex flex-col justify-center items-center w-full h-full"
               >
                 <img
                   src={category?.img}
-                  className="h-[90%] object-contain w-24 mt-2"
+                  className="h-[70%] object-contain w-24 mt-2"
                   alt={category?.title || "Category Image"}
                   loading="lazy"
                 />
@@ -46,15 +49,18 @@ function Categories() {
         <div className="my-10"></div>
         <p className="m-4 font-semibold text-lg">Shop Mens</p>
         <section className="grid grid-cols-3 grid-rows-2 gap-6  lg:grid-cols-6 lg:grid-rows-none ">
-          {mensCategories.map((category) => (
-            <div className="w-full h-48 flex flex-col bg-[#F7F7F7]  justify-center items-center hover:underline border border-transparent hover:border-orange-500 transition-all duration-300">
+          {mensCategories.map((category, index) => (
+            <div
+              className="w-full h-48 flex flex-col bg-[#F7F7F7]  justify-center items-center hover:underline border border-transparent hover:border-orange-500 transition-all duration-300"
+              key={index}
+            >
               <Link
                 to="/mensfashion"
                 className="flex flex-col justify-center items-center w-full h-full"
               >
                 <img
                   src={category.img}
-                  className="h-[90%] justify-center object-contain text-center w-24 mt-2"
+                  className="h-[75%] justify-center object-contain text-center w-24 mt-2"
                   alt=""
                   loading="lazy"
                 />
