@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaCircleCheck } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { deleteFromCart } from "../slices/cartSlice";
+import { deleteFromCart, addToCart } from "../slices/cartSlice";
 import { useNavigate } from "react-router";
 
 function Cart() {
@@ -11,26 +11,34 @@ function Cart() {
   const cartData = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  // Calculate total price
-  let totalPrice = cartData.reduce((acc, product) => {
-    return acc + (product.price || 0); // Ensure price exists
-  }, 0);
+  let totalPrice = cartData.reduce(
+    (acc, product) => acc + product.totalPrice,
+    0
+  );
+
+  const cartQuantity = cartData.reduce((acc, item) => acc + item.quantity, 0);
 
   const deletecart = (id) => {
     dispatch(deleteFromCart({ id }));
   };
 
-  // const handleBuyNow = () => {
-  //   navigate("/payment", {
-  //     state: { totalPrice, cartData }, // Pass relevant cart data
-  //   });
-  // };
+  const addCart = (product) => {
+    dispatch(addToCart(product));
+  };
+
+  const handleBuyNow = () => {
+    navigate("/payment", {
+      state: { data: cartData },
+    });
+  };
 
   return (
     <main>
       <section className="m-5 md:m-10">
         {cartData.length === 0 ? (
-          <p>Your cart is empty</p>
+          <p className="font-bold text-xl lg:text-2xl flex justify-center items-center text-green-500">
+            Your cart is empty
+          </p>
         ) : (
           <div className="flex flex-col gap-2">
             <p className="text-lg md:text-2xl font-medium">
@@ -44,10 +52,10 @@ function Cart() {
             </p>
             <button
               className="w-full md:w-1/4 rounded-full bg-orange-400 font-medium px-2 py-2"
-              // onClick={handleBuyNow}
+              onClick={handleBuyNow}
             >
-              {`Proceed to Buy (${cartData.length} ${
-                cartData.length > 1 ? "items" : "item"
+              {`Proceed to Buy (${cartQuantity} ${
+                cartQuantity > 1 ? "items" : "item"
               })`}
             </button>
             <hr className="mt-3" />
@@ -73,7 +81,7 @@ function Cart() {
               </p>
               <p className="font-bold">
                 <span className="text-sm align-top">₹</span>
-                {cartItem.price}
+                {cartItem.totalPrice.toFixed(2)} {/* Format individual price */}
               </p>
               <p className="text-sm md:text-lg">Eligible for FREE Shipping</p>
               <p className="text-green-600">In stock</p>
@@ -84,7 +92,7 @@ function Cart() {
                     <MdDelete size={18} />
                   </button>
                   <p>{cartItem.quantity || 1}</p>
-                  <button>
+                  <button onClick={() => addCart(cartItem)}>
                     <FaPlus size={14} />
                   </button>
                 </div>

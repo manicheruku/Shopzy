@@ -13,11 +13,8 @@ function WomensCategory() {
   const url = "https://fakestoreapi.com/products/category/women's%20clothing";
   let { data, isLoaded, error } = useFetchData(url);
   const [Wishlist, setWishlist] = useState([]);
-  const globalState = useSelector((state) => console.log(state));
-  useState(() => {
-    console.log(globalState);
-  }, []);
-
+  const cartData = useSelector((state) => state.cart);
+  // console.log(cartData);
   const addCart = (product) => {
     dispatch(addToCart(product));
     toast.success("Added to Cart");

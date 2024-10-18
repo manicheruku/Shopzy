@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between">
+        <div className="flex flex-col md:flex-row justify-between md:justify-around">
           {/* Shopzy logo or name */}
           <div className="mb-6 md:mb-0">
             <h2 className="text-2xl font-bold text-orange-400">Shopzy</h2>
@@ -17,19 +18,15 @@ const Footer = () => {
               <h3 className="font-semibold mb-2">Company</h3>
               <ul className="space-y-1">
                 <li>
-                  <a href="/about" className="hover:underline">
+                  <Link to="/about" className="hover:underline">
                     About Us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/careers" className="hover:underline">
-                    Careers
-                  </a>
+                  <Link to="/careers">Careers</Link>
                 </li>
                 <li>
-                  <a href="/blog" className="hover:underline">
-                    Blog
-                  </a>
+                  <Link to="/blogs">Blog</Link>
                 </li>
               </ul>
             </div>
@@ -37,19 +34,13 @@ const Footer = () => {
               <h3 className="font-semibold mb-2">Support</h3>
               <ul className="space-y-1">
                 <li>
-                  <a href="/help" className="hover:underline">
-                    Help Center
-                  </a>
+                  <Link to="/help">Help Center</Link>
                 </li>
                 <li>
-                  <a href="/contact" className="hover:underline">
-                    Contact Us
-                  </a>
+                  <Link to="/contactus">Contact Us</Link>
                 </li>
                 <li>
-                  <a href="/faq" className="hover:underline">
-                    FAQ
-                  </a>
+                  <Link to="/faq">FAQ</Link>
                 </li>
               </ul>
             </div>

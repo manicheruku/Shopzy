@@ -15,6 +15,7 @@ function Navbar({ products }) {
   const location = useLocation();
 
   const cartItems = useSelector((state) => state.cart);
+  const cartQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   useEffect(() => {
     if (location.pathname !== "/") {
@@ -111,7 +112,7 @@ function Navbar({ products }) {
           <Link to={"/cart"}>
             <li className="flex gap-0.5">
               <BsFillHandbagFill size={20} />
-              {cartItems.length}
+              {cartQuantity}
             </li>
           </Link>
           <li>
@@ -140,7 +141,7 @@ function Navbar({ products }) {
             <li className="flex-1 flex justify-center gap-1">
               <Link to={"/cart"} className="flex items-center">
                 <BsFillHandbagFill size={24} />
-                <span>{cartItems.length}</span>
+                <span>{cartQuantity}</span>
               </Link>
             </li>
             <li className="flex-1 flex justify-center">

@@ -4,12 +4,13 @@ import useFetchData from "../hooks/useFetchData";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../slices/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
 
 function ProductPage() {
   const dispatch = useDispatch();
   const { id } = useParams();
+  // const cartData = useSelector((state) => state.cart);
   const url = `https://fakestoreapi.com/products/${id}`;
   const { data, isLoaded, error } = useFetchData(url);
   const navigate = useNavigate();
@@ -22,9 +23,11 @@ function ProductPage() {
   if (!data || Object.keys(data).length === 0) {
     return <p>Product not found.</p>;
   }
-  const handleBuyNow = () => {
-    navigate("/payment", { state: { data } });
-  };
+  // const handleBuyNow = () => {
+  //   navigate("/payment", {
+  //     state: { data: cartData }, // Wrap cartData inside an object
+  //   });
+  // };
   const addCart = (product) => {
     dispatch(addToCart(data));
     toast.success("Added to Cart");
@@ -54,12 +57,12 @@ function ProductPage() {
             >
               Add to Cart
             </button>
-            <button
+            {/* <button
               className="bg-orange-400 px-4 py-2 mt-4 rounded-lg hover:bg-orange-500"
               onClick={handleBuyNow}
             >
               Buy Now
-            </button>
+            </button> */}
           </div>
         </div>
       </section>

@@ -12,6 +12,11 @@ function PaymentPage() {
     cvv: "",
   });
 
+  const totalPayable = data.reduce(
+    (acc, product) => acc + product.totalPrice,
+    0
+  );
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setPaymentDetails((prevDetails) => ({
@@ -33,8 +38,16 @@ function PaymentPage() {
   return (
     <div className="p-10">
       <h1>Payment Page</h1>
-      <p>Product: {data.title}</p>
-      <p>Price: ₹{data.price}</p>
+      {Array.isArray(data) && data.length > 0 ? (
+        data.map((product) => (
+          <div key={product.id}>
+            <p>Product: {product.title}</p>
+            <p>Price: ₹{product.totalPrice}</p>
+          </div>
+        ))
+      ) : (
+        <p>No products to display</p>
+      )}
 
       <form onSubmit={handlePayment}>
         <div>
@@ -72,7 +85,7 @@ function PaymentPage() {
         </div>
 
         <button type="submit" className="bg-green-500 px-4 py-2 mt-4">
-          Pay ₹{data.price}
+          Pay ₹{totalPayable}
         </button>
       </form>
     </div>
